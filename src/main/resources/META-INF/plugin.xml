@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin>
+    <id>com.jiweidada.htmlrender</id>
+    <name>HTML Render</name>
+    <version>1.0.0</version>
+    <vendor email="1572862469@qq.com" url="https://github.com/jiweidada">jiweidada</vendor>
+
+    <description><![CDATA[
+    Opens local HTML files directly in a rendered browser view, just like the built-in
+    Markdown preview.
+
+    Features:
+    - Double-click an .html file: it opens rendered immediately (no source, no split).
+    - Editor toolbar buttons switch between Editor / Split / Preview layouts.
+    - The preview reloads automatically (about 300 ms) after you save the file.
+
+    Rendering is powered by the embedded Chromium browser (JCEF) bundled with CLion.
+    Supported IDEs: CLion 2026.2.x.
+    ]]></description>
+
+    <change-notes><![CDATA[
+    <b>1.0.0</b>
+    <ul>
+      <li>Initial release: HTML files open directly in a JCEF-rendered view.</li>
+      <li>Editor / Split / Preview layout modes.</li>
+      <li>Auto reload on save.</li>
+    </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.jcef</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileEditorProvider implementation="com.htmlrender.preview.HtmlRenderFileEditorProvider"/>
+    </extensions>
+</idea-plugin>

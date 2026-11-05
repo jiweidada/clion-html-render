@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '2.3.0'
+    id 'org.jetbrains.intellij' version '1.17.4'
+}
+
+// Point at a local CLion installation (or a copy of it).
+// Override with the CLION_SDK_PATH environment variable.
+def clionPath = System.getenv('CLION_SDK_PATH') ?: 'C:/Users/adminstrator/Desktop/test/clion-sdk'
+
+group = 'com.jiweidada'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JCEF UI classes (JBCefBrowser) live in the bundled jcef-plugin module jar.
+    // compileOnly: they are provided by the IDE at runtime.
+    compileOnly files("$clionPath/plugins/jcef-plugin/lib/modules/intellij.platform.ui.jcef.jar")
+}
+
+intellij {
+    type = 'CL'
+    localPath = clionPath
+    downloadSources = false
+    updateSinceUntilBuild = false
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+patchPluginXml {
+    sinceBuild = '262'
+    untilBuild = '262.*'
+}
+
+tasks.configureEach {
+    if (name in ['buildSearchableOptions', 'verifyPluginConfiguration']) {
+        enabled = false
+    }
+}
