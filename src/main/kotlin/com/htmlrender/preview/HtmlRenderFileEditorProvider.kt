@@ -3,7 +3,6 @@ package com.htmlrender.preview
 import com.intellij.ide.highlighter.HtmlFileType
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.fileEditor.TextEditor
-import com.intellij.openapi.fileEditor.TextEditorWithPreview
 import com.intellij.openapi.fileEditor.TextEditorWithPreviewProvider
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
@@ -24,11 +23,11 @@ class HtmlRenderFileEditorProvider : TextEditorWithPreviewProvider(HtmlRenderPre
         file.isInLocalFileSystem && file.fileType == HtmlFileType.INSTANCE
 
     override fun createSplitEditor(textEditor: TextEditor, previewEditor: FileEditor): FileEditor {
-        return TextEditorWithPreview(
+        // The preview side is always the one this provider created above.
+        return HtmlRenderCompositeEditor(
             textEditor,
-            previewEditor,
-            "HTML Render",
-            TextEditorWithPreview.Layout.SHOW_PREVIEW
+            previewEditor as HtmlRenderPreviewEditor,
+            "HTML Render"
         )
     }
 }

@@ -55,6 +55,11 @@ class HtmlRenderPreviewEditor(private val file: VirtualFile) : FileEditor {
         file.url
     }
 
+    /** Reloads the page from disk immediately (toolbar Refresh button). */
+    fun refresh() {
+        if (file.isValid) browser?.loadURL(fileUrl())
+    }
+
     private fun scheduleReload() {
         alarm.cancelAllRequests()
         alarm.addRequest({
