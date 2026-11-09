@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.jiweidada.htmlrender</id>
     <name>HTML Render</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <vendor email="1572862469@qq.com" url="https://github.com/jiweidada">jiweidada</vendor>
 
     <description><![CDATA[
@@ -20,6 +20,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+    <b>1.0.3</b>
+    <ul>
+      <li>Fixed: the Refresh button did not actually reload the page (navigating to the same URL is a no-op in the embedded browser). It now forces a reload with a cache bypass.</li>
+    </ul>
     <b>1.0.2</b>
     <ul>
       <li>Refreshing now shows a short "refreshed at HH:mm:ss" badge in the page, so you can tell the reload happened.</li>

@@ -78,7 +78,9 @@ class HtmlRenderPreviewEditor(private val file: VirtualFile) : FileEditor {
         // Shown by the load handler once the reloaded document has finished
         // loading, so the user gets visible proof that the reload happened.
         refreshNotice = SimpleDateFormat("HH:mm:ss").format(Date())
-        browser.loadURL(fileUrl())
+        // Navigating to the very same file:// URL does not produce a CEF load
+        // (verified on CLion 2026.2.1: no onLoadEnd fired), so reload instead.
+        browser.cefBrowser.reloadIgnoreCache()
     }
 
     /** A short self-removing "refreshed at ..." badge in the bottom-right corner. */
