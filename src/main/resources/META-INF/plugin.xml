@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.jiweidada.htmlrender</id>
     <name>HTML Render</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor email="1572862469@qq.com" url="https://github.com/jiweidada">jiweidada</vendor>
 
     <description><![CDATA[
@@ -12,7 +12,7 @@
     Features:
     - Double-click an .html file: it opens rendered immediately (no source, no split).
     - Editor toolbar buttons switch between Editor / Split / Preview layouts.
-    - A Refresh button reloads the rendered page on demand.
+    - A Refresh button reloads the rendered page on demand and shows a short confirmation badge.
     - The preview reloads automatically (about 300 ms) after you save the file.
 
     Rendering is powered by the embedded Chromium browser (JCEF) bundled with CLion.
@@ -20,6 +20,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+    <b>1.0.2</b>
+    <ul>
+      <li>Refreshing now shows a short "refreshed at HH:mm:ss" badge in the page, so you can tell the reload happened.</li>
+    </ul>
     <b>1.0.1</b>
     <ul>
       <li>New: a Refresh button in the editor toolbar reloads the rendered page on demand.</li>

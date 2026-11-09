@@ -9,7 +9,7 @@ plugins {
 def clionPath = System.getenv('CLION_SDK_PATH') ?: 'C:/Users/adminstrator/Desktop/test/clion-sdk'
 
 group = 'com.jiweidada'
-version = '1.0.1'
+version = '1.0.2'
 
 repositories {
     mavenCentral()
@@ -19,6 +19,8 @@ dependencies {
     // JCEF UI classes (JBCefBrowser) live in the bundled jcef-plugin module jar.
     // compileOnly: they are provided by the IDE at runtime.
     compileOnly files("$clionPath/plugins/jcef-plugin/lib/modules/intellij.platform.ui.jcef.jar")
+    // CEF handler/browser types (org.cef.*) live in a separate jar of the same module.
+    compileOnly files("$clionPath/plugins/jcef-plugin/lib/modules/intellij.libraries.jcef.jar")
 }
 
 intellij {
